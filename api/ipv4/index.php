@@ -9,9 +9,9 @@ header("Access-Control-Allow-Origin:*");
 header("Content-type:application/json; charset=utf-8");
 
 
-require '../../vendor/autoload.php';
-require '../../core/ip/query.php';
-require '../../db/db.php';
+require_once '../../vendor/autoload.php';
+require_once '../../core/ip/query.php';
+require_once '../../db/db.php';
 
 
 $REQUEST_METHOD = $_SERVER['REQUEST_METHOD'];

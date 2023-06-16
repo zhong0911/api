@@ -10,9 +10,8 @@ error_reporting(0);
 header("Access-Control-Allow-Origin:*");
 header("Content-type:application/json; charset=utf-8");
 
-require '../../db/db.php';
+require_once '../../db/db.php';
 require '../../libs/phpqrcode/phpqrcode.php';
-
 
 $REQUEST_METHOD = $_SERVER['REQUEST_METHOD'];
 if ($REQUEST_METHOD === "GET" || $REQUEST_METHOD === "POST") {

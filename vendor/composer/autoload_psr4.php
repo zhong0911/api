@@ -7,4 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'ipip\\db\\' => array($vendorDir . '/ipip/db/src/ipip/db'),
+    'Endroid\\QrCode\\' => array($vendorDir . '/endroid/qr-code/src'),
+    'DASPRiD\\Enum\\' => array($vendorDir . '/dasprid/enum/src'),
+    'BaconQrCode\\' => array($vendorDir . '/bacon/bacon-qr-code/src'),
 );
