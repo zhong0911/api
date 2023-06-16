@@ -7,6 +7,15 @@ create table ipv4
     result text     null,
     time   datetime null
 );
+create table saorao
+(
+    id     bigint auto_increment
+        primary key,
+    addr   text     null,
+    params text     null,
+    result text     null,
+    time   datetime null
+);
 
 create table qrcode
 (

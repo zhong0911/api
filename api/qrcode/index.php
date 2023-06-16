@@ -26,5 +26,7 @@ if ($REQUEST_METHOD === "GET" || $REQUEST_METHOD === "POST") {
     }
     addQRCodeRequestRecord($_SERVER['REMOTE_ADDR'], json_encode($params, true), date('Y-m-d H:i:s'));
 } else {
-    echo json_encode(array('success' => false, "message" => 'No POST or GET method'), true);
+    $result= json_encode(array('success' => false, "message" => 'No POST or GET method'), true);
+    echo $result;
+    addIPv4RequestRecord($_SERVER['REMOTE_ADDR'], '', $result, date('Y-m-d H:i:s'));
 }

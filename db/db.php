@@ -15,6 +15,11 @@ function addIPv4RequestRecord($addr, $params, $result, $time): bool
     return insertData("insert into ipv4 (id, addr,params, result, time) values (default, '$addr', '$params', '$result', '$time')");
 }
 
+function addSaoraoRequestRecord($addr, $params, $result, $time): bool
+{
+    return insertData("insert into saorao (id, addr,params, result, time) values (default, '$addr', '$params', '$result', '$time')");
+}
+
 function insertData($sql): bool
 {
     $conn = mysqli_connect("mysql.db.antx.cc", "root", getenv("ANTX_MYSQL_PASSWORD"), "antx_api");
