@@ -13,9 +13,6 @@ header("Content-type:application/json; charset=utf-8");
 require '../../db/db.php';
 require '../../libs/phpqrcode/phpqrcode.php';
 
-$api_id = 3;
-updateAllApiRequestTimes();
-updateApiRequestTimes($api_id);
 
 $REQUEST_METHOD = $_SERVER['REQUEST_METHOD'];
 if ($REQUEST_METHOD === "GET" || $REQUEST_METHOD === "POST") {
@@ -24,11 +21,11 @@ if ($REQUEST_METHOD === "GET" || $REQUEST_METHOD === "POST") {
     $size = $params['size'] ?? 8;
     $margin = $params['margin'] ?? 1;
     if ($text !== "") {
-        QRcode::png($text, $outfile = false, $level = QR_ECLEVEL_L, $size , $margin, $saveandprint = false);
+        QRcode::png($text, $outfile = false, $level = QR_ECLEVEL_L, $size, $margin, $saveandprint = false);
     } else {
         echo "{\"success\": false, \"message\": \"Text cannot br empty\"}";
     }
-
+    addQRCodeRequestRecord($_SERVER['REMOTE_ADDR'], json_encode($params, true), date('Y-m-d H:i:s'));
 } else {
     echo json_encode(array('success' => false, "message" => 'No POST or GET method'), true);
 }

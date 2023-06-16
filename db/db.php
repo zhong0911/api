@@ -5,45 +5,19 @@
  * @Date: 2023-5-26 10:12:07
  */
 
-
-function updateApiRequestTimes($id): bool
+function addQRCodeRequestRecord($addr, $params, $time): bool
 {
-    $request_times = (int)getApiRequestTimes($id) + 1;
-    return insertData("update api set request_times=$request_times where id=$id");
+    return insertData("insert into qrcode (id, addr, params, time) values (default, '$addr', '$params', '$time')");
 }
 
-function getApiRequestTimes($id): string
+function addIPv4RequestRecord($addr, $params, $result, $time): bool
 {
-    return queryAccountData("SELECT request_times FROM api WHERE id=$id", "request_times");
+    return insertData("insert into ipv4 (id, addr,params, result, time) values (default, '$addr', '$params', '$result', '$time')");
 }
-
-function getAllApiRequestTimes(): string
-{
-    return queryAccountData("SELECT request_times FROM api WHERE id=1", "request_times");
-}
-
-function updateAllApiRequestTimes(): bool
-{
-    $request_times = (int)getAllApiRequestTimes() + 1;
-    return insertData("update api set request_times=$request_times where id=1");
-}
-
-function queryAccountData($sql, $key): string
-{
-    $conn = mysqli_connect("mysql.db.antx.cc", "root", "zhong0911MySQL", "antx");
-    $result = mysqli_query($conn, $sql);
-    $res = "";
-    while ($row = mysqli_fetch_array($result)) {
-        $res = $row[$key];
-    }
-    $conn->close();
-    return $res;
-}
-
 
 function insertData($sql): bool
 {
-    $conn = mysqli_connect("mysql.db.antx.cc", "root", "zhong0911MySQL", "antx");
+    $conn = mysqli_connect("mysql.db.antx.cc", "root", getenv("ANTX_MYSQL_PASSWORD"), "antx_api");
     $res = false;
     if ($conn->query($sql) === TRUE) {
         $res = true;
@@ -51,61 +25,3 @@ function insertData($sql): bool
     $conn->close();
     return $res;
 }
-
-
-/*
-function getShortLinkLongLink($short_link): string
-{
-    return queryAccountData("SELECT long_link FROM link WHERE short_link='$short_link'", "long_link");
-}
-
-function getShortLinkExist($short_link): bool
-{
-    return queryAccountData("SELECT short_link FROM link WHERE short_link='$short_link'", "short_link") != "";
-}
-
-function getShortLinkExpirationTime($short_link): string
-{
-    return queryAccountData("SELECT expiration_time FROM link WHERE short_link='$short_link'", "expiration_time");
-}
-
-function getShortLinkGenerationTime($short_link): string
-{
-    return queryAccountData("SELECT generation_time FROM link WHERE short_link='$short_link'", "generation_time");
-}
-
-function getShortLinkStatus($short_link): string
-{
-    return queryAccountData("SELECT status FROM link WHERE short_link='$short_link'", "status");
-}
-
-function getShortLinkRequestTimes($short_link): string
-{
-    return queryAccountData("SELECT request_times FROM link WHERE short_link='$short_link'", "request_times");
-}
-
-
-
-function getNewShortLink(): string
-{
-    do {
-        $short_link = genShortLong();
-    } while (getShortLinkExist($short_link));
-    return $short_link;
-}
-
-function addShortLink($short_link, $long_link, $generation_time, $expiration_time): bool
-{
-    return insertData("insert into link (id, short_link, long_link, status, generation_time, expiration_time, request_times) values (default, '$short_link', '$long_link', true, '$generation_time', '$expiration_time', 0)");
-}
-
-
-function genShortLong($length = 6): string
-{
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.';
-    $charactersLength = strlen($characters);
-    $randomString = '';
-    for ($i = 0; $i < $length; $i++) $randomString .= $characters[rand(0, $charactersLength - 1)];
-    return $randomString;
-}
-*/

@@ -2,6 +2,7 @@
     "require": {
         "ipip/db": "^1.0",
       "ext-json": "*",
-      "ext-curl": "*"
+      "ext-curl": "*",
+      "ext-mysqli": "*"
     }
 }
