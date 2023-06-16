@@ -1,4 +1,4 @@
-create table if not exists ipv4
+create table ipv4
 (
     id     bigint auto_increment
         primary key,
@@ -8,3 +8,11 @@ create table if not exists ipv4
     time   datetime null
 );
 
+create table qrcode
+(
+    id     bigint auto_increment
+        primary key,
+    addr   text     null,
+    params text     null,
+    time   datetime null
+);
