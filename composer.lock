@@ -1,0 +1,75 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "95f5a8bba45c6400607ad44300c78609",
+    "packages": [
+        {
+            "name": "ipip/db",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ipipdotnet/ipdb-php.git",
+                "reference": "9be2e284369c34267487487f4492de26e20a7735"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ipipdotnet/ipdb-php/zipball/9be2e284369c34267487487f4492de26e20a7735",
+                "reference": "9be2e284369c34267487487f4492de26e20a7735",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ipip\\db\\": "src/ipip/db/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "IPIP.net",
+                    "email": "frk@ipip.net",
+                    "homepage": "https://www.ipip.net"
+                }
+            ],
+            "description": "IPIP.net officially supported IP database ipdb format parsing library",
+            "homepage": "https://www.ipip.net",
+            "keywords": [
+                "IP",
+                "geo",
+                "geoip",
+                "geolocation",
+                "ipdb",
+                "ipip.net"
+            ],
+            "support": {
+                "issues": "https://github.com/ipipdotnet/ipdb-php/issues",
+                "source": "https://github.com/ipipdotnet/ipdb-php/tree/v1.0.1"
+            },
+            "time": "2023-02-09T06:59:46+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
+}
